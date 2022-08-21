@@ -107,7 +107,7 @@ class Question(models.Model):
     # Has question content
     questionContent = models.CharField(max_length=35)
     # Other fields and methods you would like to design
-    choice_set = models.Choices
+    choice_set = []
 
     # <HINT> A sample model method to calculate if learner get the score of the question
     def is_get_score(self, selected_ids):
