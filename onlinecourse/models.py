@@ -74,7 +74,7 @@ class Lesson(models.Model):
     order = models.IntegerField(default=0)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     content = models.TextField()
-
+    questions = models.Question
 
 # Enrollment model
 # <HINT> Once a user enrolled a class, an enrollment entry should be created between the user and course
@@ -107,7 +107,6 @@ class Question(models.Model):
     # Has question content
     questionContent = models.CharField(max_length=35)
     # Other fields and methods you would like to design
-    choice_set = []
 
     # <HINT> A sample model method to calculate if learner get the score of the question
     def is_get_score(self, selected_ids):
