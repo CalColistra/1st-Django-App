@@ -99,7 +99,7 @@ class Enrollment(models.Model):
     # Used to persist question content for a course
 class Question(models.Model):
     # Has a One-To-Many (or Many-To-Many if you want to reuse questions) relationship with course
-    course = models.ManyToManyField(Course)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE,default="")
     # Foreign key to lesson
     lesson_id = models.ForeignKey(Lesson, on_delete=models.CASCADE)
     # Has a grade point for each question
@@ -107,6 +107,8 @@ class Question(models.Model):
     # Has question content
     questionContent = models.CharField(max_length=35)
     # Other fields and methods you would like to design
+    def __str__(self):
+        return "Question: " + self.questionContent
 
     # <HINT> A sample model method to calculate if learner get the score of the question
     def is_get_score(self, selected_ids):
